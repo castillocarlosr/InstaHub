@@ -44,11 +44,11 @@ namespace InstaHub_MVC
             .AddCookie()
             .AddOpenIdConnect("Auth0", options => {
                 // Set the authority to your Auth0 domain
-                options.Authority = $"https://{Configuration["Auth0:Domain"]}";
+                options.Authority = $"https://{Configuration.GetConnectionString("Auth0:Domain")}";
 
                 // Configure the Auth0 Client ID and Client Secret
-                options.ClientId = Configuration["Auth0:ClientId"];
-                options.ClientSecret = Configuration["Auth0:ClientSecret"];
+                options.ClientId = Configuration.GetConnectionString("Auth0:ClientId");
+                options.ClientSecret = Configuration.GetConnectionString("Auth0:ClientSecret");
 
                 // Set response type to code
                 options.ResponseType = "code";
