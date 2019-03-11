@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using InstaHub_MVC.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,11 @@ namespace InstaHub_MVC.Data
         {
 
         }
+
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Hub> Hubs { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<UserHubs> UserHubs { get; set; }
     }
 }
