@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <RootNamespace>InstaHub_MVC</RootNamespace>
+    <UserSecretsId>7a2b6039-60e2-4fb7-8a8d-5003d06438c3</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
