@@ -13,6 +13,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using InstaHub_MVC.Hubs;
 using Microsoft.AspNetCore.SignalR;
+using InstaHub_MVC.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace InstaHub_MVC
 {
@@ -30,7 +32,10 @@ namespace InstaHub_MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           
+            services.AddDbContext<InstaHubDbContext>(options =>
+            options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"])
+            );
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
