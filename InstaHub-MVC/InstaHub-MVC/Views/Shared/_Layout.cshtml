@@ -4,25 +4,26 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - InstaHub</title>
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 </head>
 <body>
-    <nav >
-        <div >
-            <div >
-                <a asp-area="" asp-controller="Home" asp-action="Index" >InstaHub</a>
+    <nav>
+        <div>
+            <div>
+                <a asp-area="" asp-controller="Home" asp-action="Index">InstaHub</a>
             </div>
-            <div >
-                <ul >
+            <div>
+                <ul>
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                 </ul>
-                <ul >
+                <ul>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li><a  asp-controller="Account" asp-action="Logout">Logout</a></li>
+                        <li><a asp-controller="Account" asp-action="Logout">Logout</a></li>
                     }
                     else
                     {
-                        <li><a  asp-controller="Account" asp-action="Login">Login</a></li>
+                        <li><a asp-controller="Account" asp-action="Login">Login</a></li>
                     }
                 </ul>
             </div>
@@ -39,5 +40,10 @@
         </footer>
     </div>
     @RenderSection("Scripts", required: false)
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="semantic/dist/semantic.min.js"></script>
 </body>
 </html>
