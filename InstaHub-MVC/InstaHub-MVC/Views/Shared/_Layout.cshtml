@@ -1,44 +1,44 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - InstaHub</title>
-</head>
-<body>
-    <nav >
-        <div >
-            <div >
-                <a asp-area="" asp-controller="Home" asp-action="Index" >InstaHub</a>
-            </div>
-            <div >
-                <ul >
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                </ul>
-                <ul>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - InstaHub</title>
+        <link rel="stylesheet" type="text/css" href="~/css/semantic.min.css">
+    </head>
+    <body>
+        <nav>
+            <div class="ui inverted menu">
+                <div class="ui inverted menu">
+                    <a class="active item" asp-controller="Home" asp-action="Index">Home</a>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li><a asp-controller="Account" asp-action="Logout">Logout</a></li>
+                        <a class="item" asp-controller="Account" asp-action="Logout">Logout</a>
                     }
                     else
                     {
-                        <li><a asp-controller="Account" asp-action="Login">Login</a></li>
-                        <li><a asp-controller="Account" asp-action="ExternalLogin">External Login</a></li>
+                        <a class="item" asp-controller="Account" asp-action="Login">Login</a>
                     }
-                </ul>
+                </div>
             </div>
+        </nav>
+
+        <partial name="_CookieConsentPartial" />
+
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; 2019 - InstaHub</p>
+            </footer>
         </div>
-    </nav>
+        @RenderSection("Scripts", required: false)
 
-    <partial name="_CookieConsentPartial" />
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2019 - InstaHub</p>
-        </footer>
-    </div>
-    @RenderSection("Scripts", required: false)
-</body>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+                integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+                crossorigin="anonymous"></script>
+        <script src="~/js/semantic.min.js"></script>
+        <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+        <script src="~/js/chat.js"></script>
+    </body>
 </html>

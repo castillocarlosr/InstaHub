@@ -11,6 +11,10 @@ using Microsoft.Extensions.Options;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using InstaHub_MVC.Hubs;
+using Microsoft.AspNetCore.SignalR;
+using InstaHub_MVC.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace InstaHub_MVC
 {
@@ -28,6 +32,10 @@ namespace InstaHub_MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<InstaHubDbContext>(options =>
+            options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"])
+            );
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -94,8 +102,8 @@ namespace InstaHub_MVC
                 };
             });
 
-            services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -105,6 +113,7 @@ namespace InstaHub_MVC
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
             }
             else
             {
@@ -116,12 +125,16 @@ namespace InstaHub_MVC
             app.UseCookiePolicy();
 
             app.UseAuthentication();
-
-            app.UseMvc(routes =>
+            app.UseSignalR(routes =>
             {
-                routes.MapRoute(
+                routes.MapHub<ChatHub>("/chatHub");
+            });
+            app.UseMvc(route =>
+            {
+                route.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}"
+                    );
             });
         }
     }
