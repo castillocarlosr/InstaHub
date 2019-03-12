@@ -11,6 +11,7 @@ using Microsoft.Extensions.Options;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using InstaHub_MVC.Hubs;
 
 namespace InstaHub_MVC
 {
@@ -94,8 +95,8 @@ namespace InstaHub_MVC
                 };
             });
 
-            services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -105,6 +106,7 @@ namespace InstaHub_MVC
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
             }
             else
             {
@@ -117,12 +119,11 @@ namespace InstaHub_MVC
 
             app.UseAuthentication();
 
-            app.UseMvc(routes =>
+            app.UseSignalR(routes =>
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapHub<ChatHub>("/chatHub");
             });
+            app.UseMvc();
         }
     }
 }
