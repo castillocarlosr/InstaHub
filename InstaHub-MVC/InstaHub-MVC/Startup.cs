@@ -32,10 +32,19 @@ namespace InstaHub_MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<InstaHubDbContext>(options =>
-            options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"])
-            );
-
+            if (HostingEnvironment.IsProduction())
+            {
+                services.AddDbContext<InstaHubDbContext>(options =>
+                options.UseSqlServer(Configuration["ConnectionStrings:DeployedDbConnection"])
+                );
+            }
+            else
+            {
+                services.AddDbContext<InstaHubDbContext>(options =>
+                options.UseSqlServer(Configuration["ConnectionStrings:LocalDbConnection"])
+                );
+            }
+            
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
