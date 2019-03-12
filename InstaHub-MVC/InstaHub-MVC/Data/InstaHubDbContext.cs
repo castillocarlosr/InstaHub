@@ -1,4 +1,5 @@
 ﻿using InstaHub_MVC.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,8 @@ namespace InstaHub_MVC.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-
+            builder.Entity<UserHubs>().HasKey(uh => new { uh.UserID, uh.HubID });
+            builder.Entity<Contact>().HasKey(c => new { c.UserID, c.ContactID });
         }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
