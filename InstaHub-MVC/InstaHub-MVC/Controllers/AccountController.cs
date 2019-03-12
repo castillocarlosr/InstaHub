@@ -40,7 +40,7 @@ namespace SampleMvcApp.Controllers
             {
                 ApplicationUser user = new ApplicationUser()
                 {
-                    UserName = rvm.UserName,
+                    //UserName = rvm.UserName,
                     //Email = rvm.Email,
                     //FirstName = rvm.FirstName,
                     //LastName = rvm.LastName,
@@ -51,14 +51,14 @@ namespace SampleMvcApp.Controllers
                 if (result.Succeeded)
                 {
 
-                    Claim userNameClaim = new Claim("UserName", $"{user.UserName}");
+                    //Claim userNameClaim = new Claim("UserName", $"{user.UserName}");
                     //Claim fullNameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
                     //Claim emailClaim = new Claim(ClaimTypes.Email, $"{user.Email}", ClaimTypes.Email);
 
                     //List<Claim> claims = new List<Claim> { userNameClaim ,fullNameClaim, emailClaim };
-                    List<Claim> claims = new List<Claim> { userNameClaim };
+                    //List<Claim> claims = new List<Claim> { userNameClaim };
 
-                    await _userManager.AddClaimsAsync(user, claims);
+                    //await _userManager.AddClaimsAsync(user, claims);
                     await _signInManager.SignInAsync(user, isPersistent: false);
                 }
             }
@@ -77,7 +77,7 @@ namespace SampleMvcApp.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Folder");
+                    return RedirectToAction("Index", "Home");
                 }
             }
             ModelState.TryAddModelError(string.Empty, "Invalid Login Attempt");

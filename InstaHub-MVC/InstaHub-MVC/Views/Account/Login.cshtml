@@ -54,7 +54,6 @@ else
     <section class="Outter">
         <span>Hello @User.Claims.First(m => m.Type == "FullName").Value</span>
         <p>YOU ARE already LOGGED IN</p>
-        <a asp-controller="Product" asp-action="Products">View Products</a>
     </section>
 }
 
