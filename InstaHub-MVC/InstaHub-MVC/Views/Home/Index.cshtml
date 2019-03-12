@@ -1,21 +1,21 @@
-﻿@using InstaHub_MVC.Models;
+﻿@*@using InstaHub_MVC.Models;
 @using Microsoft.AspNetCore.Identity;
 
-@inject SignInManager<ApplicationUser> SignInManager
+@inject SignInManager<ApplicationUser> SignInManager*@
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Home Page";
 }
-<div class="row">
-    <h1>Hello Carlos, Luther, Andrew, Sean, and all the dogs.</h1>
-</div>
+
 <!DOCTYPE html>
 <html>
 <head>
     <title> Landing Chat Page</title>
 </head>
 <body>
-
-    <h1 class="display-4">Welcome to InstaHub</h1>
+    <div class="row">
+        <h1>Hello Carlos, Luther, Andrew, Sean, and all the dogs.</h1>
+    </div>
+    @*<h1 class="display-4">Welcome to InstaHub</h1>
     <header class="main-header">
         <div class="jumbotron jumbotron-fluid">
             @if (!SignInManager.IsSignedIn(User))
@@ -25,11 +25,11 @@
             }
             else
             {
-                <a asp-controller="Cart" asp-action="Index">View Cart</a>
-                <a asp-controller="Product" asp-action="Products">View Products</a>
+                <a asp-controller="" asp-action="Index">View </a>
+                <a asp-controller="" asp-action="iNDEX">View SOMTHING</a>
             }
         </div>
-    </header>
+    </header>*@
 
 </body>
 </html>

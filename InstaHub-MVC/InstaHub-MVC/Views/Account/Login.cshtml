@@ -1,4 +1,6 @@
-﻿@model InstaHub_MVC.Models.ViewModels.LoginUser
+﻿<h1>fdasfadsfdsfdsa</h1>
+
+@model InstaHub_MVC.Models.ViewModels.LoginUser
 @using Microsoft.AspNetCore.Identity;
 @using InstaHub_MVC.Models;
 @inject SignInManager<ApplicationUser> SignInManager
@@ -40,23 +42,7 @@
                             Don't have an account? <a asp-controller="Account" asp-action="Register">Register</a>
                         </div>
                     </div>
-                    @{
-                        var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
-                        if (loginProviders.Count > 0)
-                        {
-                            <h6>You may login using the following external login</h6>
-                            <form asp-action="ExternalLogin" method="post">
-                                @foreach (var provider in loginProviders)
-                                {
-                                    <button type="submit" name="provider" value="@provider.Name" title="Log in using @provider.DisplayName"> @provider.Name</button>
-                                }
-                                <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                            </form>
-                            <!--<form asp-action="ExternalLogin" method="post"></form>-->
-                            <form asp-controller="Index" asp-action="Folder" method="post"></form>
-                        }
-                    }
                 </div>
             </div>
         </div>
@@ -71,3 +57,4 @@ else
         <a asp-controller="Product" asp-action="Products">View Products</a>
     </section>
 }
+
