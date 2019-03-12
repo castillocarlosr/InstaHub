@@ -14,7 +14,7 @@ namespace SampleMvcApp.Controllers
 {
     public class AccountController : Controller
     {
-
+        /*
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signInManager;
 
@@ -83,7 +83,7 @@ namespace SampleMvcApp.Controllers
             ModelState.TryAddModelError(string.Empty, "Invalid Login Attempt");
             return View(lvm);
         }
-
+        */
         //*****************************************External Login******************************
         /// <summary>
         /// External Login
@@ -162,20 +162,29 @@ namespace SampleMvcApp.Controllers
         public async Task ExternalLogin(string returnUrl = "/")
         {
             await HttpContext.ChallengeAsync("Auth0", new AuthenticationProperties() { RedirectUri = returnUrl });
+            //var user = new ApplicationUser
+            //{
+            //    UserName = elvm.Email,
+            //    Email = elvm.Email,
+            //    FirstName = elvm.FirstName,
+            //    LastName = elvm.LastName,
+            //};
+
+            //var result = await _userManager.CreateAsync(user);
         }
         
         [Authorize]
         public async Task Logout()
         {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            //await _signInManager.SignOutAsync();
             await HttpContext.SignOutAsync("Auth0", new AuthenticationProperties
             {
                 // Indicate here where Auth0 should redirect the user after a logout.
                 // Note that the resulting absolute Uri must be whitelisted in the 
                 // **Allowed Logout URLs** settings for the client.
                 RedirectUri = Url.Action("Index", "Home")
-            });
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            await _signInManager.SignOutAsync();
+            }); 
         }
 
         /// <summary>
