@@ -7,6 +7,7 @@ namespace InstaHub_MVC.Models
 {
     public class ApplicationUser
     {
+        public int UserID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public bool Online { get; set; }
