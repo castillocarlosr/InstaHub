@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace InstaHub_MVC.Controllers
 {
@@ -24,15 +25,23 @@ namespace InstaHub_MVC.Controllers
                     await HttpContext.GetTokenAsync("expires_at"),
                     CultureInfo.InvariantCulture,
                     DateTimeStyles.RoundtripKind);
-
+                
                 string idToken = await HttpContext.GetTokenAsync("id_token");
-                //idToken.
+
+                // -------------------------------------------------------//
+                // Decrypt jwt
+                var handler = new JwtSecurityTokenHandler();
+                var tokenS = handler.ReadToken(idToken) as JwtSecurityToken;
+                // Save user information to model
+                // Create new application user
+                // save to DB
+                // need service for application user table
+                // -------------------------------------------------------//
+
 
                 // Now you can use them. For more info on when and how to use the
                 // access_token and id_token, see https://auth0.com/docs/tokens
             }
-            //var userName = User.Identity.Name;
-            //var userEmail = User.Claims.FirstOrDefault(x => x.Subject.Name == userName);
             return View();
         }
 
