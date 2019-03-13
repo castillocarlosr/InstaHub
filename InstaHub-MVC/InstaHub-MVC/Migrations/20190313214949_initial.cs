@@ -12,10 +12,11 @@ namespace InstaHub_MVC.Migrations
                 name: "ApplicationUsers",
                 columns: table => new
                 {
-                    UserID = table.Column<string>(nullable: false),
+                    UserID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Email = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    Online = table.Column<bool>(nullable: false)
+                    Avatar = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -23,29 +24,17 @@ namespace InstaHub_MVC.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Contacts",
-                columns: table => new
-                {
-                    UserID = table.Column<string>(nullable: false),
-                    ContactID = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Contacts", x => new { x.UserID, x.ContactID });
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Hubs",
+                name: "Groups",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
-                    HubType = table.Column<int>(nullable: false)
+                    GroupType = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Hubs", x => x.ID);
+                    table.PrimaryKey("PK_Groups", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -55,8 +44,8 @@ namespace InstaHub_MVC.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UserID = table.Column<string>(nullable: true),
-                    HubID = table.Column<int>(nullable: false),
-                    Content = table.Column<string>(nullable: true),
+                    GroupID = table.Column<int>(nullable: false),
+                    Value = table.Column<string>(nullable: true),
                     Timestamp = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -65,15 +54,15 @@ namespace InstaHub_MVC.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserHubs",
+                name: "UserGroupss",
                 columns: table => new
                 {
                     UserID = table.Column<string>(nullable: false),
-                    HubID = table.Column<int>(nullable: false)
+                    GroupID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserHubs", x => new { x.UserID, x.HubID });
+                    table.PrimaryKey("PK_UserGroupss", x => new { x.UserID, x.GroupID });
                 });
         }
 
@@ -83,16 +72,13 @@ namespace InstaHub_MVC.Migrations
                 name: "ApplicationUsers");
 
             migrationBuilder.DropTable(
-                name: "Contacts");
-
-            migrationBuilder.DropTable(
-                name: "Hubs");
+                name: "Groups");
 
             migrationBuilder.DropTable(
                 name: "Messages");
 
             migrationBuilder.DropTable(
-                name: "UserHubs");
+                name: "UserGroupss");
         }
     }
 }
