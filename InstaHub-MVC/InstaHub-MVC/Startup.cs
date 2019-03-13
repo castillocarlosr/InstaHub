@@ -71,7 +71,7 @@ namespace InstaHub_MVC
                 options.ResponseType = "code";
 
                 // Configure the scope
-                options.Scope.Clear();
+                //options.Scope.Clear();
                 options.Scope.Add("openid");
 
                 // Set the callback path, so Auth0 will call back to http://localhost:3000/callback

@@ -26,11 +26,13 @@ namespace InstaHub_MVC.Controllers
                     DateTimeStyles.RoundtripKind);
 
                 string idToken = await HttpContext.GetTokenAsync("id_token");
+                //idToken.
 
                 // Now you can use them. For more info on when and how to use the
                 // access_token and id_token, see https://auth0.com/docs/tokens
             }
-
+            //var userName = User.Identity.Name;
+            //var userEmail = User.Claims.FirstOrDefault(x => x.Subject.Name == userName);
             return View();
         }
 
