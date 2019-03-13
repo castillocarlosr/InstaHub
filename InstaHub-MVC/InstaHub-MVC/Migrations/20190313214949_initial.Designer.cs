@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InstaHub_MVC.Migrations
 {
     [DbContext(typeof(InstaHubDbContext))]
-    [Migration("20190312185639_initial")]
+    [Migration("20190313214949_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,44 +23,34 @@ namespace InstaHub_MVC.Migrations
 
             modelBuilder.Entity("InstaHub_MVC.Models.ApplicationUser", b =>
                 {
-                    b.Property<string>("UserID")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("UserID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Avatar");
+
+                    b.Property<string>("Email");
 
                     b.Property<string>("Name");
-
-                    b.Property<bool>("Online");
 
                     b.HasKey("UserID");
 
                     b.ToTable("ApplicationUsers");
                 });
 
-            modelBuilder.Entity("InstaHub_MVC.Models.Contact", b =>
-                {
-                    b.Property<string>("UserID");
-
-                    b.Property<int>("ContactID");
-
-                    b.HasKey("UserID", "ContactID");
-
-                    b.ToTable("Contacts");
-                });
-
-            modelBuilder.Entity("InstaHub_MVC.Models.Hub", b =>
+            modelBuilder.Entity("InstaHub_MVC.Models.Group", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("HubType");
+                    b.Property<int>("GroupType");
 
                     b.Property<string>("Name");
 
                     b.HasKey("ID");
 
-                    b.ToTable("Hubs");
+                    b.ToTable("Groups");
                 });
 
             modelBuilder.Entity("InstaHub_MVC.Models.Message", b =>
@@ -69,28 +59,28 @@ namespace InstaHub_MVC.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Content");
-
-                    b.Property<int>("HubID");
+                    b.Property<int>("GroupID");
 
                     b.Property<DateTime>("Timestamp");
 
                     b.Property<string>("UserID");
+
+                    b.Property<string>("Value");
 
                     b.HasKey("ID");
 
                     b.ToTable("Messages");
                 });
 
-            modelBuilder.Entity("InstaHub_MVC.Models.UserHubs", b =>
+            modelBuilder.Entity("InstaHub_MVC.Models.UserGroup", b =>
                 {
                     b.Property<string>("UserID");
 
-                    b.Property<int>("HubID");
+                    b.Property<int>("GroupID");
 
-                    b.HasKey("UserID", "HubID");
+                    b.HasKey("UserID", "GroupID");
 
-                    b.ToTable("UserHubs");
+                    b.ToTable("UserGroupss");
                 });
 #pragma warning restore 612, 618
         }

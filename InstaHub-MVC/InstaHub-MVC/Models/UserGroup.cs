@@ -5,11 +5,12 @@ using System.Threading.Tasks;
 
 namespace InstaHub_MVC.Models
 {
-    public class Contact
+    public class UserGroup
     {
         public string UserID { get; set; }
-        public int ContactID { get; set; }
+        public int GroupID { get; set; }
 
         public ApplicationUser User;
+        public Group Group;
     }
 }
