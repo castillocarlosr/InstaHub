@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace InstaHub_MVC.Models
 {
-    public class ApplicationUser
+    public class ApplicationUser : IdentityUser
     {
         [Key]
         public string UserID { get; set; }

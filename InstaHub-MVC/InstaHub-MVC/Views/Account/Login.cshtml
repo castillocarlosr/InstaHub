@@ -1,0 +1,59 @@
+﻿<h1>fdasfadsfdsfdsa</h1>
+
+@model InstaHub_MVC.Models.ViewModels.LoginUser
+@using Microsoft.AspNetCore.Identity;
+@using InstaHub_MVC.Models;
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+}
+
+
+@if (!SignInManager.IsSignedIn(User))
+{
+    <section class="Outter">
+        <div class="container">
+            <div class="d-flex justify-content-center h-100">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Sign In</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div class="form-group">
+                                <label asp-for="Email">Email address</label>
+                                <input class="form-group" asp-for="Email" />
+                                <h5 asp-validation-for="Email"></h5>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Password">PASSWORD</label>
+                                <input class="form-group" asp-for="Password" />
+                                <h5 asp-validation-for="Password"></h5>
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox"> Remember me</label>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn float-right login_btn">LOGIN</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-center links">
+                            Don't have an account? <a asp-controller="Account" asp-action="Register">Register</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+}
+else
+{
+    <section class="Outter">
+        <span>Hello @User.Claims.First(m => m.Type == "FullName").Value</span>
+        <p>YOU ARE already LOGGED IN</p>
+    </section>
+}
+
