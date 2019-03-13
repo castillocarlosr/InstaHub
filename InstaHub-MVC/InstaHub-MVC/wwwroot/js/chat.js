@@ -5,7 +5,9 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 connection.on("ReceiveMessage", function (message) {
     var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     var div = document.createElement("div");
-    div.innerHTML = msg + "<hr/>";
+    div.className = "ui message";
+    div.innerHTML= `<p>${message}</p>`
+    //div.innerHTML = msg + "<hr/>";
     document.getElementById("messages").appendChild(div)
 });
 

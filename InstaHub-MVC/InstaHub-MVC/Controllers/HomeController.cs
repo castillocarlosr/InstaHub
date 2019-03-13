@@ -41,6 +41,7 @@ namespace InstaHub_MVC.Controllers
 
                 // Now you can use them. For more info on when and how to use the
                 // access_token and id_token, see https://auth0.com/docs/tokens
+                
             }
             return View();
         }
