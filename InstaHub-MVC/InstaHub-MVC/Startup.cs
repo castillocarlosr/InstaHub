@@ -71,7 +71,7 @@ namespace InstaHub_MVC
                 options.ResponseType = "code";
 
                 // Configure the scope
-                options.Scope.Add("openid");
+                options.Scope.Add("openid email");
 
                 // Set the callback path, so Auth0 will call back to http://localhost:3000/callback
                 // Also ensure that you have added the URL as an Allowed Callback URL in your Auth0 dashboard
