@@ -11,6 +11,14 @@ connection.on("ReceiveMessage", function (user, message) {
     var li = document.createElement("li");
     li.textContent = encodedMsg;
     document.getElementById("messagesList").appendChild(li);
+        //.then(() => {
+        //    $.ajax({
+        //        url: 'urlToController',
+        //        data: { id: id }
+        //    }).done(function () {
+        //        alert('Added');
+        //});
+    
 });
 
 connection.start().then(function () {
