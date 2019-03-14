@@ -15,9 +15,25 @@ namespace InstaHub_MVC.Data
 
         }
 
+
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<UserGroup>().HasKey(ug => new { ug.UserID, ug.GroupID });
+
+            builder.Entity<Group>().HasData(
+                new Group
+                {
+                    ID = 1,
+                    Name = "Code-R-Us",
+                    GroupType = GroupType.Public
+                },
+                new Group
+                {
+                    ID = 2,
+                    Name = "Public Code",
+                    GroupType = GroupType.Public
+                });
         }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }

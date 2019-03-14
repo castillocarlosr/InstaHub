@@ -9,6 +9,7 @@ namespace InstaHub_MVC.Models.Interfaces
     public interface IAppUser
     {
         Task AddAppUser(ApplicationUser appUser);
-        Task<ApplicationUser> GetApplicationUserByEmail(string email);
+
+        Task<ApplicationUser> GetApplicationUserByID(string id); 
     }
 }
