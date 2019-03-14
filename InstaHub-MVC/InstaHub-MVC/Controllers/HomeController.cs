@@ -6,11 +6,25 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
+using InstaHub_MVC.Models;
+using InstaHub_MVC.Models.Interfaces;
 
 namespace InstaHub_MVC.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IAppUser _context;
+        private readonly IGroup _group;
+
+        public HomeController(IAppUser context, IGroup group)
+        {
+            _context = context;
+            _group = group;
+        }
+
+        
+        
+        
         // Set props
         // Build constructor
         public async Task<IActionResult> Index()
@@ -18,6 +32,8 @@ namespace InstaHub_MVC.Controllers
             // If the user is authenticated, then this is how you can get the access_token and id_token
             if (User.Identity.IsAuthenticated)
             {
+
+
                 string accessToken = await HttpContext.GetTokenAsync("access_token");
 
                 // if you need to check the access token expiration time, use this value
@@ -34,6 +50,8 @@ namespace InstaHub_MVC.Controllers
                 // Decrypt jwt
                 var handler = new JwtSecurityTokenHandler();
                 var tokenS = handler.ReadToken(idToken) as JwtSecurityToken;
+
+                
                 // First check if user in in DB, check by email
                 // if(_user.GetApplicationUserByID(string email) == null)
                 // {
