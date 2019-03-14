@@ -6,11 +6,21 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
+using InstaHub_MVC.Models.Interfaces;
+using InstaHub_MVC.Models;
 
 namespace InstaHub_MVC.Controllers
 {
     public class HomeController : Controller
     {
+        private IGroup _group { get; }
+        private IAppUser _user { get; }
+
+        public HomeController(IGroup group, IAppUser user)
+        {
+            _group = group;
+            _user = user;
+        }
         // Set props
         // Build constructor
         public async Task<IActionResult> Index()
@@ -31,17 +41,20 @@ namespace InstaHub_MVC.Controllers
                 string idToken = await HttpContext.GetTokenAsync("id_token");
 
                 // -------------------------------------------------------//
-                // Decrypt jwt
                 var handler = new JwtSecurityTokenHandler();
                 var tokenS = handler.ReadToken(idToken) as JwtSecurityToken;
-                // First check if user in in DB, check by email
-                // if(_user.GetApplicationUserByID(string email) == null)
-                // {
-                // ApplicationUser appUser= new ApplicationUser();
-                // set props
-                //  _user.AddAppUser(appUser);
-                // List<Group> groups = _groups.GetPublicGroups();
-                // return View(groups);
+                string email = tokenS.Claims.FirstOrDefault(c => c.Type == "email").Value;
+                if (await _user.GetApplicationUserByEmail(email) == null)
+                {
+                    ApplicationUser appUser = new ApplicationUser();
+                    appUser.Name = tokenS.Claims.FirstOrDefault(c => c.Type == "name").Value;
+                    appUser.Email = tokenS.Claims.FirstOrDefault(c => c.Type == "email").Value;
+                    appUser.Avatar = tokenS.Claims.FirstOrDefault(c => c.Type == "picture").Value;
+
+                    await _user.AddAppUser(appUser);
+                    IEnumerable<Group> groups = await _group.GetPublicGroups();
+                    return View(groups);
+                }
                 // -------------------------------------------------------//
 
 

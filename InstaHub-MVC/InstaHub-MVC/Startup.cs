@@ -15,6 +15,8 @@ using InstaHub_MVC.Hubs;
 using Microsoft.AspNetCore.SignalR;
 using InstaHub_MVC.Data;
 using Microsoft.EntityFrameworkCore;
+using InstaHub_MVC.Models.Interfaces;
+using InstaHub_MVC.Models.Services;
 
 namespace InstaHub_MVC
 {
@@ -112,6 +114,9 @@ namespace InstaHub_MVC
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSignalR();
+
+            services.AddScoped<IGroup, GroupServices>();
+            services.AddScoped<IAppUser, ApplicationUserServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
