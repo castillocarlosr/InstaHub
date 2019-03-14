@@ -10,6 +10,6 @@ namespace InstaHub_MVC.Models.Interfaces
     {
         Task AddAppUser(ApplicationUser appUser);
 
-        Task<ApplicationUser> GetApplicationUserByID(string id); 
+        Task<ApplicationUser> GetApplicationUserByEmail(string email); 
     }
 }
