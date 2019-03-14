@@ -119,7 +119,7 @@ namespace InstaHub_MVC
             services.AddScoped<IAppUser, ApplicationUserServices>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.  STUFF!
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
 
