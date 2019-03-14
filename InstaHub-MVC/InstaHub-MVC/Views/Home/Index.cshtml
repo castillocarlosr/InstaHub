@@ -1,33 +1,85 @@
 ﻿@*@using InstaHub_MVC.Models;
-@using Microsoft.AspNetCore.Identity;
-@inject SignInManager<ApplicationUser> SignInManager*@
+    @using Microsoft.AspNetCore.Identity;
+    @inject SignInManager<ApplicationUser> SignInManager*@
 
 @{
     ViewData["Title"] = "Home Page";
 }
-<div class="row">
-    <h1>Hello Carlos, Luther, Andrew, Sean, and all the dogs.</h1>
-    <div class="container">
-        <div class="row">&nbsp;</div>
-        <div class="row">
-            <div class="col-6">&nbsp;</div>
-            <div class="col-6">
-                User..........<input type="text" id="userInput" />
-                <br />
-                Message...<input type="text" id="messageInput" />
-                <input type="button" id="sendButton" value="Send Message" />
+
+<div class="ui comments">
+    <input type="button" id="joinGroup" value="Join Private Group" />
+</div>
+
+@*<textarea name="message" id="message"></textarea>*@
+<select id="group">
+    <option value="All">Everyone</option>
+    <option value="Myself">Myself</option>
+    <option value="PrivateGroup">Private Group</option>
+</select>
+@*<input type="button" id="sendButton" value="Send Message" />
+
+    @*<div id="messages"></div>*@
+
+
+<div id="wrapper">
+    <div class="ui sidebar inverted vertical menu visible">
+        <a class="header item">
+            Channels
+        </a>
+        <a class="item">
+            #general
+        </a>
+        <a class="item">
+            #random
+        </a>
+        <a class="item">
+            #support
+        </a>
+
+        <div class="ui horizontal divider">
+
+        </div>
+
+        <a class="header item">
+            Direct Messages
+        </a>
+        <a class="item">
+            slackbot
+        </a>
+
+    </div>
+    <div class="pusher">
+        <!-- Site content !-->
+        <div class="ui secondary  menu">
+            <div class="header item">
+                #General
+            </div>
+            @*<div class="right menu">
+                <div class="item">
+                    <div class="ui icon input">
+                        <input type="text" placeholder="Search">
+                        <i class="search link icon"></i>
+                    </div>
+                </div>
+            </div>*@
+        </div>
+        <div id="messages">
+            <div class="ui message">
+                <p>
+                    <img class="ui avatar image" src="https://wths.hope.edu/wp-content/uploads/2017/04/profile-placeholder.png"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.
+                </p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <hr />
+
+        <div class="ui vertical footer segment" id="footer">
+
+            <div class="ui fluid action input">
+                <div class="spacer"></div>
+                <input type="text" name="message" id="message" placeholder="Message #general"/>
+                <div class="ui button" id="sendButton" >Send Message</div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-6">&nbsp;</div>
-            <div class="col-6">
-                <ul id="messagesList"></ul>
-            </div>
-        </div>
+
     </div>
 </div>
+

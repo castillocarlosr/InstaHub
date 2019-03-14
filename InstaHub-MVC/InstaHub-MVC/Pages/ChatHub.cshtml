@@ -1,5 +1,6 @@
 ﻿@page
-<div class="container">
+
+@*<div class="container">
     <div class="row">&nbsp;</div>
     <div class="row">
         <div class="col-6">&nbsp;</div>
@@ -21,6 +22,20 @@
             <ul id="messagesList"></ul>
         </div>
     </div>
+</div>*@
+
+<div>
+    <input type="button" id="joinGroup" value="Join Private Group"/>
 </div>
+
+<textarea name="message" id="message"></textarea>
+<select id="group">
+    <option value="All">Everyone</option>
+    <option value="Myself">Myself</option>
+    <option value="PrivateGroup">Private Group</option>
+</select>
+
+<div id="messages"></div>
+
 <script src="~/lib/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/chat.js"></script>

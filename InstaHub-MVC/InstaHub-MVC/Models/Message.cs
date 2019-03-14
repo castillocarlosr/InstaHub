@@ -8,12 +8,12 @@ namespace InstaHub_MVC.Models
     public class Message
     {
         public int ID { get; set; }
-        public string UserID { get; set; }
-        public int HubID { get; set; }
-        public string Content { get; set; }
+        public int UserID { get; set; }
+        public int GroupID { get; set; }
+        public string Value { get; set; }
         public DateTime Timestamp { get; set; }
 
-        public Hub Hub;
+        public Group Group;
         public ApplicationUser User;
     }
 }

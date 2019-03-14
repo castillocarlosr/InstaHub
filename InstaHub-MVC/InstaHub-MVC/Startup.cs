@@ -71,8 +71,7 @@ namespace InstaHub_MVC
                 options.ResponseType = "code";
 
                 // Configure the scope
-                options.Scope.Clear();
-                options.Scope.Add("openid");
+                options.Scope.Add("openid email");
 
                 // Set the callback path, so Auth0 will call back to http://localhost:3000/callback
                 // Also ensure that you have added the URL as an Allowed Callback URL in your Auth0 dashboard
@@ -115,7 +114,7 @@ namespace InstaHub_MVC
             services.AddSignalR();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.  STUFF!
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
 
