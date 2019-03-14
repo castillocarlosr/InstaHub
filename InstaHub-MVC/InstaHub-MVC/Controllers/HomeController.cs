@@ -11,6 +11,8 @@ namespace InstaHub_MVC.Controllers
 {
     public class HomeController : Controller
     {
+        // Set props
+        // Build constructor
         public async Task<IActionResult> Index()
         {
             // If the user is authenticated, then this is how you can get the access_token and id_token
@@ -32,16 +34,20 @@ namespace InstaHub_MVC.Controllers
                 // Decrypt jwt
                 var handler = new JwtSecurityTokenHandler();
                 var tokenS = handler.ReadToken(idToken) as JwtSecurityToken;
-                // Save user information to model
-                // Create new application user
-                // save to DB
-                // need service for application user table
+                // First check if user in in DB, check by email
+                // if(_user.GetApplicationUserByID(string email) == null)
+                // {
+                // ApplicationUser appUser= new ApplicationUser();
+                // set props
+                //  _user.AddAppUser(appUser);
+                // List<Group> groups = _groups.GetPublicGroups();
+                // return View(groups);
                 // -------------------------------------------------------//
 
 
                 // Now you can use them. For more info on when and how to use the
                 // access_token and id_token, see https://auth0.com/docs/tokens
-                
+
             }
             return View();
         }
