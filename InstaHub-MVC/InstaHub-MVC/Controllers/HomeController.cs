@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
 using InstaHub_MVC.Models.Interfaces;
 using InstaHub_MVC.Models;
-using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace InstaHub_MVC.Controllers
 {
@@ -16,7 +16,6 @@ namespace InstaHub_MVC.Controllers
     {
         private IGroup _group { get; }
         private IAppUser _user { get; }
-        private UserManager<ApplicationUser> _userManager;
 
         public HomeController(IGroup group, IAppUser user)
         {
@@ -27,8 +26,6 @@ namespace InstaHub_MVC.Controllers
         // Build constructor
         public async Task<IActionResult> Index()
         {
-            var query = await _userManager.CreateAsync(user);
-
             // If the user is authenticated, then this is how you can get the access_token and id_token
             if (User.Identity.IsAuthenticated)
             {
@@ -48,12 +45,16 @@ namespace InstaHub_MVC.Controllers
                 var handler = new JwtSecurityTokenHandler();
                 var tokenS = handler.ReadToken(idToken) as JwtSecurityToken;
                 string email = tokenS.Claims.FirstOrDefault(c => c.Type == "email").Value;
+
+                var claims = new List<Claim> { new Claim(ClaimTypes.Name, email) };
+
                 if (await _user.GetApplicationUserByEmail(email) == null)
                 {
                     ApplicationUser appUser = new ApplicationUser();
                     appUser.Name = tokenS.Claims.FirstOrDefault(c => c.Type == "name").Value;
                     appUser.Email = tokenS.Claims.FirstOrDefault(c => c.Type == "email").Value;
                     appUser.Avatar = tokenS.Claims.FirstOrDefault(c => c.Type == "picture").Value;
+
 
                     await _user.AddAppUser(appUser);
                     IEnumerable<Group> groups = await _group.GetPublicGroups();
