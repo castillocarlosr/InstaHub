@@ -9,7 +9,7 @@ namespace InstaHub_MVC.Controllers
 {
     public class AccountController : Controller
     {
-        public async Task Login(string returnUrl = "/")
+        public async Task Login(string returnUrl = "/Home/Index")
         {
             await HttpContext.ChallengeAsync("Auth0", new AuthenticationProperties()
             {
