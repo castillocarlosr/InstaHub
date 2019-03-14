@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
 using InstaHub_MVC.Models.Interfaces;
 using InstaHub_MVC.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace InstaHub_MVC.Controllers
 {
@@ -15,6 +16,7 @@ namespace InstaHub_MVC.Controllers
     {
         private IGroup _group { get; }
         private IAppUser _user { get; }
+        private UserManager<ApplicationUser> _userManager;
 
         public HomeController(IGroup group, IAppUser user)
         {
@@ -25,6 +27,8 @@ namespace InstaHub_MVC.Controllers
         // Build constructor
         public async Task<IActionResult> Index()
         {
+            var query = await _userManager.CreateAsync(user);
+
             // If the user is authenticated, then this is how you can get the access_token and id_token
             if (User.Identity.IsAuthenticated)
             {
