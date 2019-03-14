@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InstaHub_MVC.Migrations
 {
     [DbContext(typeof(InstaHubDbContext))]
-    [Migration("20190313214949_initial")]
-    partial class initial
+    [Migration("20190314003616_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace InstaHub_MVC.Migrations
 
             modelBuilder.Entity("InstaHub_MVC.Models.ApplicationUser", b =>
                 {
-                    b.Property<int>("UserID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -33,7 +33,7 @@ namespace InstaHub_MVC.Migrations
 
                     b.Property<string>("Name");
 
-                    b.HasKey("UserID");
+                    b.HasKey("ID");
 
                     b.ToTable("ApplicationUsers");
                 });
@@ -63,7 +63,7 @@ namespace InstaHub_MVC.Migrations
 
                     b.Property<DateTime>("Timestamp");
 
-                    b.Property<string>("UserID");
+                    b.Property<int>("UserID");
 
                     b.Property<string>("Value");
 
@@ -74,13 +74,13 @@ namespace InstaHub_MVC.Migrations
 
             modelBuilder.Entity("InstaHub_MVC.Models.UserGroup", b =>
                 {
-                    b.Property<string>("UserID");
+                    b.Property<int>("UserID");
 
                     b.Property<int>("GroupID");
 
                     b.HasKey("UserID", "GroupID");
 
-                    b.ToTable("UserGroupss");
+                    b.ToTable("UserGroups");
                 });
 #pragma warning restore 612, 618
         }
