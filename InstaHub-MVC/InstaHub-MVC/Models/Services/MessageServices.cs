@@ -18,10 +18,15 @@ namespace InstaHub_MVC.Models.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<Group>> GetMessages(Group group)
+        public Task<List<Group>> GetMessages(Group group)
         {
-           //Group group = await _context.Hubs.FirstOrDefaultAsync(g => g.HubID == )
-           Group group = await _context.Hubs.Where(g => g.)
+            throw new NotImplementedException();
         }
+
+        //public async Task<List<Group>> GetMessages(Group group)
+        //{
+        //   Group group = await _context.Hubs.FirstOrDefaultAsync(g => g.HubID == )
+        //   Group group = await _context.Hubs.Where(g => g.)
+        //}
     }
 }

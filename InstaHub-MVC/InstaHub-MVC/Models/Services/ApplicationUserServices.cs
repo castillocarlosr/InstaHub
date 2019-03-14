@@ -23,18 +23,10 @@ namespace InstaHub_MVC.Models.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task<ApplicationUser> GetApplicationUserByID(string id)
+        public async Task<ApplicationUser> GetApplicationUserByID(string email)
         {
-            ApplicationUser applicationUser = await _context.ApplicationUsers.FirstOrDefaultAsync(u => u.Id == id);
+            ApplicationUser applicationUser = await _context.ApplicationUsers.FirstOrDefaultAsync(u => u.Email == email);
             return applicationUser;
-        }
-
-        public async Task<Group> GetUserGroupAsync(int id)
-        {
-            //Group group = await _context.Hubs.Where(g => g.Id)
-            Group group = await _context.UserHubs.FirstOrDefaultAsync(g => g.Id == id);
-            group.GroupType = await _context.Hubs.Where(g => g.HubsID == group.ID).Include("Message").ToListAsync();
-            return group;
         }
     }
 }
