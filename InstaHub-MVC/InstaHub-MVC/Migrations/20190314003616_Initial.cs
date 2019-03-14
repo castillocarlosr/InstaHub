@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace InstaHub_MVC.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +12,7 @@ namespace InstaHub_MVC.Migrations
                 name: "ApplicationUsers",
                 columns: table => new
                 {
-                    UserID = table.Column<int>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Email = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
@@ -20,7 +20,7 @@ namespace InstaHub_MVC.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ApplicationUsers", x => x.UserID);
+                    table.PrimaryKey("PK_ApplicationUsers", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -43,7 +43,7 @@ namespace InstaHub_MVC.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserID = table.Column<string>(nullable: true),
+                    UserID = table.Column<int>(nullable: false),
                     GroupID = table.Column<int>(nullable: false),
                     Value = table.Column<string>(nullable: true),
                     Timestamp = table.Column<DateTime>(nullable: false)
@@ -54,15 +54,15 @@ namespace InstaHub_MVC.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserGroupss",
+                name: "UserGroups",
                 columns: table => new
                 {
-                    UserID = table.Column<string>(nullable: false),
+                    UserID = table.Column<int>(nullable: false),
                     GroupID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserGroupss", x => new { x.UserID, x.GroupID });
+                    table.PrimaryKey("PK_UserGroups", x => new { x.UserID, x.GroupID });
                 });
         }
 
@@ -78,7 +78,7 @@ namespace InstaHub_MVC.Migrations
                 name: "Messages");
 
             migrationBuilder.DropTable(
-                name: "UserGroupss");
+                name: "UserGroups");
         }
     }
 }

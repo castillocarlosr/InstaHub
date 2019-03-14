@@ -17,12 +17,12 @@ namespace InstaHub_MVC.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<UserGroup>().HasKey(uh => new { uh.UserID, uh.GroupID });
+            builder.Entity<UserGroup>().HasKey(ug => new { ug.UserID, ug.GroupID });
         }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Message> Messages { get; set; }
-        public DbSet<UserGroup> UserGroupss { get; set; }
+        public DbSet<UserGroup> UserGroups { get; set; }
     }
 }
