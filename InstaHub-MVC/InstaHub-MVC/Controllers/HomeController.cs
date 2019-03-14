@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
 using InstaHub_MVC.Models.Interfaces;
 using InstaHub_MVC.Models;
+using System.Security.Claims;
 
 namespace InstaHub_MVC.Controllers
 {
@@ -44,12 +45,16 @@ namespace InstaHub_MVC.Controllers
                 var handler = new JwtSecurityTokenHandler();
                 var tokenS = handler.ReadToken(idToken) as JwtSecurityToken;
                 string email = tokenS.Claims.FirstOrDefault(c => c.Type == "email").Value;
+
+                var claims = new List<Claim> { new Claim(ClaimTypes.Name, email) };
+
                 if (await _user.GetApplicationUserByEmail(email) == null)
                 {
                     ApplicationUser appUser = new ApplicationUser();
                     appUser.Name = tokenS.Claims.FirstOrDefault(c => c.Type == "name").Value;
                     appUser.Email = tokenS.Claims.FirstOrDefault(c => c.Type == "email").Value;
                     appUser.Avatar = tokenS.Claims.FirstOrDefault(c => c.Type == "picture").Value;
+
 
                     await _user.AddAppUser(appUser);
                     IEnumerable<Group> groups = await _group.GetPublicGroups();
