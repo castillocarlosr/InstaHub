@@ -10,8 +10,8 @@ namespace InstaHub_Testing
         public void UserIDGetSet()
         {
             ApplicationUser user = new ApplicationUser();
-            user.UserID = 1;
-            Assert.Equal(1, user.UserID);
+            user.ID = 1;
+            Assert.Equal(1, user.ID);
         }
 
         [Fact]
