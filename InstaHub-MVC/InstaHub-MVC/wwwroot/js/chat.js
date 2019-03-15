@@ -57,7 +57,8 @@ document.getElementById("sendButton").addEventListener("click", function (event)
             return console.error(err.toString());
         });
     }
-
+    document.getElementById("message").value = "";
+    document.getElementById("message").focus();
     event.preventDefault();
 });
 
