@@ -49,6 +49,20 @@ namespace InstaHub_MVC.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Groups");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            GroupType = 1,
+                            Name = "Code-R-Us"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            GroupType = 1,
+                            Name = "Public Code"
+                        });
                 });
 
             modelBuilder.Entity("InstaHub_MVC.Models.Message", b =>
@@ -57,11 +71,11 @@ namespace InstaHub_MVC.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("GroupID");
+                    b.Property<string>("GroupName");
 
                     b.Property<DateTime>("Timestamp");
 
-                    b.Property<int>("UserID");
+                    b.Property<string>("UserName");
 
                     b.Property<string>("Value");
 

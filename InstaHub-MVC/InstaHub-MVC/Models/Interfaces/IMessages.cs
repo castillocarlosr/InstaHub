@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace InstaHub_MVC.Models.Interfaces
 {
-    interface IMessages
+    public interface IMessages
     {
         Task AddMessage(Message message);
 
-        Task<List<Group>> GetMessages(Group group);
+        Task<List<Message>> GetMessages(int groupName);
     }
 }

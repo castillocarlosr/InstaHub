@@ -1,15 +1,38 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+
+# *Project InstaHub*
+
+## We are deployed on Azure!
+[InstaHub](https://instahub.azurewebsites.net)
+```
+https://instahub.azurewebsites.net
+```
+----------------------------------------------------------------------------
+###  Web Application
+  - This application is a chat messaging program.  The application consist of front-end written in Razor views, JavaScript, CSS, Semantic-UI, and HTML.  The back-end consist was written in C# using ASP.NET Core 2.2.101, Entity Framework Core, MVC framwork, Signal-R.
+
+  - At the landing page, the user is prompted to login using an external Log-In option.  The authorization if handled by [Auth0](https://auth0.com) that handles the security for user authentication and password hashing.
+
+  - The user is then directed to a general-group message window.  In this window, any user logged in the application can submit messages here for anyone using the application can see.  The user also has the option to DM (direct-message) another user that produces a modal (pop-up screen) to then be able to submit messages only to that user and recieve any messages that user might have sent back.
+----------------------------------------------------------------------------
 
 # Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+1.	Clone the repository to your local machine.
+2.	Once downloaded, use Visual Studio 2017 to build the web application.(Note: this was written before 2 months before Visual Studio 2019 is set to be released).
+3.  Add-migration and update database to your local machine.
+-   The provided code-first migration will need to be applied to the SQL server of your choice.  This requires the Microsoft.EntityFrameworkCore.Tools NuGet package installed from the NuGet Package Manager Console.
+-   An update-database will need to be run before running the application.
+4.  Auth0 requires Domain, ClientID, and ClientSecret to be used to access the Auth0.
+-   You will have to register and provide your own keys/tokens for this access and supply them into your user secrets.
+5.	Latest release on March 15, 2019.
+-   Once all material is set-up, you may run the application using IIS Express.
+----------------------------------------------------------------------------
 
 # Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+1.  xUnit Testing was run for the back-end.
+-   Get & Set for UserGroup Model
+-   Get & Set for Message Model
+-   Get & Set for Group Model
+-   Get & Set for ApplicatioUser
 
 # Contribute
 TODO: Explain how other users and developers can contribute to make your code better. 

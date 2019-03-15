@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace InstaHub_MVC.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -43,8 +43,8 @@ namespace InstaHub_MVC.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserID = table.Column<int>(nullable: false),
-                    GroupID = table.Column<int>(nullable: false),
+                    UserName = table.Column<string>(nullable: true),
+                    GroupName = table.Column<string>(nullable: true),
                     Value = table.Column<string>(nullable: true),
                     Timestamp = table.Column<DateTime>(nullable: false)
                 },
@@ -64,6 +64,16 @@ namespace InstaHub_MVC.Migrations
                 {
                     table.PrimaryKey("PK_UserGroups", x => new { x.UserID, x.GroupID });
                 });
+
+            migrationBuilder.InsertData(
+                table: "Groups",
+                columns: new[] { "ID", "GroupType", "Name" },
+                values: new object[] { 1, 1, "Code-R-Us" });
+
+            migrationBuilder.InsertData(
+                table: "Groups",
+                columns: new[] { "ID", "GroupType", "Name" },
+                values: new object[] { 2, 1, "Public Code" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

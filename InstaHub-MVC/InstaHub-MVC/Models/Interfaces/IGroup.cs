@@ -7,6 +7,6 @@ namespace InstaHub_MVC.Models.Interfaces
 {
     public interface IGroup
     {
-        Task<GroupType> GetGroupType { get; set; }
+        Task<IEnumerable<Group>> GetPublicGroups();
     }
 }
