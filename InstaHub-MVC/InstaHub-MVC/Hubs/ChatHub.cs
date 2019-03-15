@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using InstaHub_MVC.Models.Interfaces;
 using InstaHub_MVC.Models;
 using InstaHub_MVC.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace InstaHub_MVC.Hubs
 {
@@ -62,7 +63,8 @@ namespace InstaHub_MVC.Hubs
             var messages =  _context.Messages.ToList();
             foreach(var message in messages)
             {
-                await Clients.Caller.SendAsync("ReceiveMessage", message.Value);
+                ApplicationUser user = await _context.ApplicationUsers.FirstOrDefaultAsync(u => u.Email == message.UserName);
+                await Clients.Caller.SendAsync("GetAllGeneralMessages", message, user.Avatar);
 
             }
             await Clients.All.SendAsync("UserConnected", Context.ConnectionId, Context.User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress").Value);
