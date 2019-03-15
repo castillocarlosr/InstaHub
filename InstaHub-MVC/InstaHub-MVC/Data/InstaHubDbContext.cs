@@ -16,7 +16,10 @@ namespace InstaHub_MVC.Data
         }
 
 
-
+        /// <summary>
+        /// Populating the database with seeded data
+        /// </summary>
+        /// <param name="builder"></param>
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<UserGroup>().HasKey(ug => new { ug.UserID, ug.GroupID });
