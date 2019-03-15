@@ -17,6 +17,8 @@ using InstaHub_MVC.Data;
 using Microsoft.EntityFrameworkCore;
 using InstaHub_MVC.Models.Interfaces;
 using InstaHub_MVC.Models.Services;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using InstaHub_MVC.Models;
 
 namespace InstaHub_MVC
 {
@@ -118,6 +120,7 @@ namespace InstaHub_MVC
             services.AddScoped<IGroup, GroupServices>();
             services.AddScoped<IMessages, MessageServices>();
             services.AddScoped<IAppUser, ApplicationUserServices>();
+            services.AddScoped<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.  STUFF!
