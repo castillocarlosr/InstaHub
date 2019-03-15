@@ -6,14 +6,14 @@
 ```
 https://instahub.azurewebsites.net
 ```
-----------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
 ###  Web Application
   - This application is a chat messaging program.  The application consist of front-end written in Razor views, JavaScript, CSS, Semantic-UI, and HTML.  The back-end consist was written in C# using ASP.NET Core 2.2.101, Entity Framework Core, MVC framwork, Signal-R.
 
   - At the landing page, the user is prompted to login using an external Log-In option.  The authorization if handled by [Auth0](https://auth0.com) that handles the security for user authentication and password hashing.
 
   - The user is then directed to a general-group message window.  In this window, any user logged in the application can submit messages here for anyone using the application can see.  The user also has the option to DM (direct-message) another user that produces a modal (pop-up screen) to then be able to submit messages only to that user and recieve any messages that user might have sent back.
-----------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
 
 # Getting Started
 1.	Clone the repository to your local machine.
@@ -25,24 +25,41 @@ https://instahub.azurewebsites.net
 -   You will have to register and provide your own keys/tokens for this access and supply them into your user secrets.
 5.	Latest release on March 15, 2019.
 -   Once all material is set-up, you may run the application using IIS Express.
-----------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
 
-# Build and Test
+## Database Schema
+![DbSchema](DbSchema.png)
+
+
+--------------------------------------------------------------------------------------------------------------------------
+## Build and Test
 1.  xUnit Testing was run for the back-end.
 -   Get & Set for UserGroup Model
 -   Get & Set for Message Model
 -   Get & Set for Group Model
 -   Get & Set for ApplicatioUser
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+--------------------------------------------------------------------------------------------------------------------------
+
+## Contribute
+TODO: Want to help contribute to our code?
+- We will assign issues on github issues on what needs to be done.
+- Most issues are stretch goals that were not meet.  (Creating groups, direct messages, ect.)
+- Keep in mind this is also a learning process for us as well
 
 If you want to learn more about creating good readme files then refer the following [guidelines](https://www.visualstudio.com/en-us/docs/git/create-a-readme). You can also seek inspiration from the below readme files:
 - [ASP.NET Core](https://github.com/aspnet/Home)
 - [Visual Studio Code](https://github.com/Microsoft/vscode)
 - [Chakra Core](https://github.com/Microsoft/ChakraCore)
 
-
-
 --------------------------------------------------------------------------------------------------------------------------
-![DbSchema](DbSchema.png)
+## Latest update
+```
+March 15, 2019
+```
+--------------------------------------------------------------------------------------------------------------------------
+# Authors
+* [Carlos Castillo](https://github.com/castillocarlosr)
+* [Sean Miller](https://github.com/Deliman206)
+* [Luther Mckeiver](https://github.com/LutherMckeiver)
+* [Andrew Quamme](https://github.com/andrewquamme)
