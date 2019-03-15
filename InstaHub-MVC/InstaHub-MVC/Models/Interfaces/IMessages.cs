@@ -9,6 +9,6 @@ namespace InstaHub_MVC.Models.Interfaces
     {
         Task AddMessage(Message message);
 
-        Task<List<Message>> GetMessages(int groupName);
+        Task<IEnumerable<Message>> GetMessages(int groupName);
     }
 }
