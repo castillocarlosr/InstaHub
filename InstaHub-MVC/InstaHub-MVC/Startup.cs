@@ -116,6 +116,7 @@ namespace InstaHub_MVC
             services.AddSignalR();
 
             services.AddScoped<IGroup, GroupServices>();
+            services.AddScoped<IMessages, MessageServices>();
             services.AddScoped<IAppUser, ApplicationUserServices>();
         }
 
