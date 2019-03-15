@@ -11,14 +11,18 @@ connection.on("ReceiveMessage", function (message) {
     document.getElementById("messages").appendChild(div)
 });
 
-connection.on("UserConnected", function (connectionId) {
-    var groupElement = document.getElementById("group");
-    var option = document.createElement("option");
-    option.text = connectionId;
-    option.value = connectionId;
-    groupElement.add(option);
+connection.on("UserConnected", function (connectionId, email) {
+    var groupElement = document.getElementById("dmContainer");
+    var message = document.getElementById("message").value;
+    var userOnline = document.createElement("a");
+    userOnline.id = connectionId;
+    userOnline.text = email;
+    userOnline.className = "item dm";
+    
+    groupElement.appendChild(userOnline);
 });
 
+//TODO REMOVE FROM SIDEBAR
 connection.on("UserDisconnected", function (connectionId) {
     var groupElement = document.getElementById("group");
     for (var i = 0; i < groupElement.Length; i++) {
@@ -32,6 +36,7 @@ connection.start().catch(function (err) {
     return console.error(err.toString());
 });
 
+//TDOD ON KEYPRESS and CLEAR TEXT FIELD
 document.getElementById("sendButton").addEventListener("click", function (event) {
     var message = document.getElementById("message").value;
     var groupElement = document.getElementById("group");
