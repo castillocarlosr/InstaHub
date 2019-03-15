@@ -18,7 +18,7 @@ namespace InstaHub_MVC.Models.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<Message>> GetMessages(int groupName)
+        public async Task<IEnumerable<Message>> GetMessages(int groupName)
         {
             return await _context.Messages.Where(m => m.GroupName == "general").ToListAsync();
         }

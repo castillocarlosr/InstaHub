@@ -11,6 +11,19 @@ connection.on("ReceiveMessage", function (message) {
     document.getElementById("messages").appendChild(div)
 });
 
+//<p>
+//    <img class="ui avatar image" src="https://wths.hope.edu/wp-content/uploads/2017/04/profile-placeholder.png"> This is changed to english because Andrew Q failed Latin in high school!!
+//</p>
+
+connection.on("GetAllGeneralMessages", (message, avatar) => {
+    console.log(message);
+    var div = document.createElement("div");
+    div.className = "ui message";
+    div.innerHTML = `<p><img class="ui avatar image" src="${avatar}"><strong>${message.userName}</strong>: ${message.value}</p>`
+    //div.innerHTML = msg + "<hr/>";
+    document.getElementById("messages").appendChild(div)
+});
+
 connection.on("UserConnected", function (connectionId, email) {
     var groupElement = document.getElementById("dmContainer");
     var message = document.getElementById("message").value;
@@ -22,12 +35,12 @@ connection.on("UserConnected", function (connectionId, email) {
     groupElement.appendChild(userOnline);
 });
 
-//TODO REMOVE FROM SIDEBAR
+
 connection.on("UserDisconnected", function (connectionId) {
     var groupElement = document.getElementById("group");
     for (var i = 0; i < groupElement.Length; i++) {
-        if (groupElement.options[i].value === connectionId) {
-            groupElement.remove(i);
+        if (groupElement.children[i].id === connectionId) {
+            groupElement.children[i].remove(i);
         }
     }
 });
@@ -57,7 +70,8 @@ document.getElementById("sendButton").addEventListener("click", function (event)
             return console.error(err.toString());
         });
     }
-
+    document.getElementById("message").value = "";
+    document.getElementById("message").focus();
     event.preventDefault();
 });
 
