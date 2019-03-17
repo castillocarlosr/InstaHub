@@ -9,6 +9,11 @@ namespace InstaHub_MVC.Controllers
 {
     public class AccountController : Controller
     {
+        /// <summary>
+        /// The login that uses Auth-Zero to handle identity mangement and authentication
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         public async Task Login(string returnUrl = "/Home/Index")
         {
             await HttpContext.ChallengeAsync("Auth0", new AuthenticationProperties()
@@ -17,6 +22,10 @@ namespace InstaHub_MVC.Controllers
             });
         }
 
+        /// <summary>
+        /// Same Auth-Zero to handle the logout and redirect the page to the login page.
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
         public async Task Logout()
         {

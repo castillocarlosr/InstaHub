@@ -15,12 +15,22 @@ namespace InstaHub_MVC.Hubs
         private InstaHubDbContext _context { get; set; }
         private IMessages _message { get; set; }
 
+        /// <summary>
+        /// ChatHub constructor
+        /// </summary>
+        /// <param name="context">Handeling messages to and from database</param>
+        /// <param name="message">messages comming in from the interface</param>
         public ChatHub(InstaHubDbContext context, IMessages message)
         {
             _context = context;
             _message = message;
         }
 
+        /// <summary>
+        /// #general group for all users to use messages 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public async Task SendMessageToAll(string message)
         {
             Message m = new Message();
@@ -35,21 +45,25 @@ namespace InstaHub_MVC.Hubs
             await Clients.All.SendAsync("ReceiveMessage",  message);
         }
 
+        //Not used yet
         public Task SendMessageToCaller(string message)
         {
             return Clients.Caller.SendAsync("ReceiveMessage", message);
         }
 
+        //Not used yet
         public Task SendMessageToUser(string connectionId, string message)
         {
             return Clients.Client(connectionId).SendAsync("ReceiveMessage", message);
         }
 
+        //Not used yet
         public Task JoinGroup(string group)
         {
             return Groups.AddToGroupAsync(Context.ConnectionId, group);
         }
 
+        //Not used yet
         public Task SendMessageToGroup(string group, string message)
         {
 
