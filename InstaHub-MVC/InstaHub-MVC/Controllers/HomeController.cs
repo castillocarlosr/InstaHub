@@ -70,6 +70,10 @@ namespace InstaHub_MVC.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Returns the Error View
+        /// </summary>
+        /// <returns>Error View</returns>
         public IActionResult Error()
         {
             return View();
