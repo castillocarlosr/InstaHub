@@ -23,8 +23,8 @@ namespace InstaHub_MVC.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<UserGroup>().HasKey(ug => new { ug.UserID, ug.GroupID });
-
             /*
+            //inital seeding of database to create public group.  Not enough time to implement yet.
             builder.Entity<Group>().HasData(
                 new Group
                 {

@@ -10,7 +10,7 @@ namespace InstaHub_MVC.Controllers
     public class AccountController : Controller
     {
         /// <summary>
-        /// Login method takes you to our Home page.
+        /// The login that uses Auth-Zero to handle identity mangement and authentication
         /// </summary>
         /// <param name="returnUrl"></param>
         /// <returns></returns>
@@ -23,7 +23,7 @@ namespace InstaHub_MVC.Controllers
         }
 
         /// <summary>
-        /// Method that makes sure that only users that logged in can logout
+        /// Same Auth-Zero to handle the logout and redirect the page to the login page.
         /// </summary>
         /// <returns></returns>
         [Authorize]

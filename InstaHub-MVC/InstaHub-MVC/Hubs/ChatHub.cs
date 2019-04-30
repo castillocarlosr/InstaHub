@@ -25,10 +25,10 @@
         private IMessages _message { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChatHub"/> class.
+        /// ChatHub constructor
         /// </summary>
-        /// <param name="context">The context<see cref="InstaHubDbContext"/></param>
-        /// <param name="message">The message interface <see cref="IMessages"/></param>
+        /// <param name="context">Handeling messages to and from database</param>
+        /// <param name="message">messages comming in from the interface</param>
         public ChatHub(InstaHubDbContext context, IMessages message)
         {
             _context = context;
@@ -36,10 +36,10 @@
         }
 
         /// <summary>
-        /// TThis will send a message to all connection ID's that are currently online
+        /// #general group for all users to use messages 
         /// </summary>
-        /// <param name="message">The message<see cref="string"/></param>
-        /// <returns>The <see cref="Task"/>Message To All Users</returns>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public async Task SendMessageToAll(string message)
         {
             Message m = new Message();
@@ -59,6 +59,7 @@
         /// </summary>
         /// <param name="message">The message<see cref="string"/></param>
         /// <returns>The <see cref="Task"/>Message to self</returns>
+        //Not used yet
         public Task SendMessageToCaller(string message)
         {
             return Clients.Caller.SendAsync("ReceiveMessage", message);
@@ -70,6 +71,7 @@
         /// <param name="connectionId">The connectionId<see cref="string"/></param>
         /// <param name="message">The message<see cref="string"/></param>
         /// <returns>The <see cref="Task"/>Message to the individual user</returns>
+        //Not used yet
         public Task SendMessageToUser(string connectionId, string message)
         {
             return Clients.Client(connectionId).SendAsync("ReceiveMessage", message);
@@ -80,6 +82,7 @@
         /// </summary>
         /// <param name="group">The group<see cref="string"/></param>
         /// <returns>The <see cref="Task"/>Added To Group/ Create A Group</returns>
+        //Not used yet
         public Task JoinGroup(string group)
         {
             return Groups.AddToGroupAsync(Context.ConnectionId, group);
@@ -91,6 +94,7 @@
         /// <param name="group">The group<see cref="string"/></param>
         /// <param name="message">The message<see cref="string"/></param>
         /// <returns>The <see cref="Task"/>Message To Group</returns>
+        //Not used yet
         public Task SendMessageToGroup(string group, string message)
         {
 
