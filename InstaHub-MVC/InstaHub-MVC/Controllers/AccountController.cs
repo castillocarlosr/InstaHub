@@ -50,7 +50,10 @@ namespace InstaHub_MVC.Controllers
         {
             return View();
         }
-
+        /// <summary>
+        /// This method will bring you to the Access Denied View
+        /// </summary>
+        /// <returns>View Access Denied</returns>
         public IActionResult AccessDenied()
         {
             return View();
