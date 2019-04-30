@@ -24,6 +24,7 @@ namespace InstaHub_MVC.Data
         {
             builder.Entity<UserGroup>().HasKey(ug => new { ug.UserID, ug.GroupID });
 
+            /*
             builder.Entity<Group>().HasData(
                 new Group
                 {
@@ -37,6 +38,7 @@ namespace InstaHub_MVC.Data
                     Name = "Public Code",
                     GroupType = GroupType.Public
                 });
+                */
         }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }

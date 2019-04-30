@@ -43,7 +43,7 @@
         public async Task SendMessageToAll(string message)
         {
             Message m = new Message();
-            m.GroupName = "general";
+            m.GroupName = "Castillo Family Open Channel";
             m.UserName = Context.User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress").Value;
             m.Value = message;
             m.Timestamp = DateTime.Now;
