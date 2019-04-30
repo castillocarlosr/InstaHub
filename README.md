@@ -2,9 +2,11 @@
 # *Project InstaHub*
 
 ## We are deployed on Azure!
+Note:  Link below broken.  Feel free to look at the source code though.
 [InstaHub](https://instahub.azurewebsites.net)
+~~https://instahub.azurewebsites.net~~
 ```
-https://instahub.azurewebsites.net
+ Azure trial over.  Setting up new site.  Last update April 30, 2019 -Carlos
 ```
 --------------------------------------------------------------------------------------------------------------------------
 ###  Web Application
