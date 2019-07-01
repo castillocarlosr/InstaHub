@@ -4,14 +4,16 @@ using InstaHub_MVC.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace InstaHub_MVC.Migrations
 {
     [DbContext(typeof(InstaHubDbContext))]
-    partial class InstaHubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190701193357_July012019")]
+    partial class July012019
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
