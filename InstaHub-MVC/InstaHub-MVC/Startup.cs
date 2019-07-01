@@ -123,14 +123,13 @@ namespace InstaHub_MVC
             services.AddScoped<IEmailSender, EmailSender>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.  STUFF!
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.  FUN STUFF!
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-
             }
             else
             {
