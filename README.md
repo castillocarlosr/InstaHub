@@ -8,6 +8,10 @@ Note:  Link below broken.  Feel free to look at the source code though.
 ```
  Azure trial over.  Setting up new site.  Last update April 30, 2019 -Carlos
 ```
+New website host coming soon.  Please wait suring set-up and deployment.  -July 01, 2019
+```
+https://instahubfamilychat.azurewebsites.net/
+```
 --------------------------------------------------------------------------------------------------------------------------
 ###  Web Application
   - This application is a chat messaging program.  The application consist of front-end written in Razor views, JavaScript, CSS, Semantic-UI, and HTML.  The back-end consist was written in C# using ASP.NET Core 2.2.101, Entity Framework Core, MVC framwork, Signal-R.
