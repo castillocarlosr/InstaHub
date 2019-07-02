@@ -9,6 +9,11 @@ namespace InstaHub_MVC.Controllers
 {
     public class AccountController : Controller
     {
+        /// <summary>
+        /// Login method takes you to our Home page.
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         public async Task Login(string returnUrl = "/Home/Index")
         {
             await HttpContext.ChallengeAsync("Auth0", new AuthenticationProperties()
@@ -17,10 +22,14 @@ namespace InstaHub_MVC.Controllers
             });
         }
 
+        /// <summary>
+        /// Method that makes sure that only users that logged in can logout
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
         public async Task Logout()
         {
-            
+
             await HttpContext.SignOutAsync("Auth0", new AuthenticationProperties
             {
                 // Indicate here where Auth0 should redirect the user after a logout.
@@ -41,7 +50,10 @@ namespace InstaHub_MVC.Controllers
         {
             return View();
         }
-
+        /// <summary>
+        /// This method will bring you to the Access Denied View
+        /// </summary>
+        /// <returns>View Access Denied</returns>
         public IActionResult AccessDenied()
         {
             return View();

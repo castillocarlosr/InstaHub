@@ -9,8 +9,6 @@ using System.IdentityModel.Tokens.Jwt;
 using InstaHub_MVC.Models.Interfaces;
 using InstaHub_MVC.Models;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using System.Text;
 
 namespace InstaHub_MVC.Controllers
 {
@@ -18,13 +16,11 @@ namespace InstaHub_MVC.Controllers
     {
         private IGroup _group { get; }
         private IAppUser _user { get; }
-        private IEmailSender _emailSender;
 
-        public HomeController(IGroup group, IAppUser user, IEmailSender emailSender)
+        public HomeController(IGroup group, IAppUser user)
         {
             _group = group;
             _user = user;
-            _emailSender = emailSender;
         }
         // Set props
         // Build constructor
@@ -42,7 +38,7 @@ namespace InstaHub_MVC.Controllers
                     await HttpContext.GetTokenAsync("expires_at"),
                     CultureInfo.InvariantCulture,
                     DateTimeStyles.RoundtripKind);
-                
+
                 string idToken = await HttpContext.GetTokenAsync("id_token");
 
                 // -------------------------------------------------------//
@@ -58,17 +54,14 @@ namespace InstaHub_MVC.Controllers
                     appUser.Name = tokenS.Claims.FirstOrDefault(c => c.Type == "name").Value;
                     appUser.Email = tokenS.Claims.FirstOrDefault(c => c.Type == "email").Value;
                     appUser.Avatar = tokenS.Claims.FirstOrDefault(c => c.Type == "picture").Value;
-                    
-                    StringBuilder sb = new StringBuilder();
-                    sb.Append("<h2>Congratulations on using InstaHub</h2>");
-                    sb.AppendLine("<p>Chatting is cool!</p>");
-                    await _emailSender.SendEmailAsync(appUser.Email, "Thank you for using InstaHub", sb.ToString());
-                    
+
+
                     await _user.AddAppUser(appUser);
                     IEnumerable<Group> groups = await _group.GetPublicGroups();
                     return View(groups);
                 }
                 // -------------------------------------------------------//
+
 
                 // Now you can use them. For more info on when and how to use the
                 // access_token and id_token, see https://auth0.com/docs/tokens
@@ -77,6 +70,10 @@ namespace InstaHub_MVC.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Returns the Error View
+        /// </summary>
+        /// <returns>Error View</returns>
         public IActionResult Error()
         {
             return View();
