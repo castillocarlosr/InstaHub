@@ -16,11 +16,15 @@ namespace InstaHub_MVC.Data
         }
 
 
-
+        /// <summary>
+        /// Populating the database with seeded data
+        /// </summary>
+        /// <param name="builder"></param>
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<UserGroup>().HasKey(ug => new { ug.UserID, ug.GroupID });
-
+            /*
+            //inital seeding of database to create public group.  Not enough time to implement yet.
             builder.Entity<Group>().HasData(
                 new Group
                 {
@@ -34,6 +38,7 @@ namespace InstaHub_MVC.Data
                     Name = "Public Code",
                     GroupType = GroupType.Public
                 });
+                */
         }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }

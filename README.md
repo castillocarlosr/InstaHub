@@ -2,9 +2,15 @@
 # *Project InstaHub*
 
 ## We are deployed on Azure!
+Note:  Link below broken.  Feel free to look at the source code though.
 [InstaHub](https://instahub.azurewebsites.net)
+~~https://instahub.azurewebsites.net~~
 ```
-https://instahub.azurewebsites.net
+ Azure trial over.  Setting up new site.  Last update April 30, 2019 -Carlos
+```
+New website host coming soon.  Please wait suring set-up and deployment.  -July 01, 2019
+```
+https://instahubfamilychat.azurewebsites.net/
 ```
 --------------------------------------------------------------------------------------------------------------------------
 ###  Web Application
@@ -55,7 +61,8 @@ If you want to learn more about creating good readme files then refer the follow
 --------------------------------------------------------------------------------------------------------------------------
 ## Latest update
 ```
-March 15, 2019
+~~March 15, 2019~~
+April 30, 2019
 ```
 --------------------------------------------------------------------------------------------------------------------------
 # Authors

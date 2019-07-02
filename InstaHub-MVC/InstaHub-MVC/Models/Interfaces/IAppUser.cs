@@ -1,15 +1,24 @@
-﻿using InstaHub_MVC.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace InstaHub_MVC.Models.Interfaces
+﻿namespace InstaHub_MVC.Models.Interfaces
 {
+    using System.Threading.Tasks;
+
+    /// <summary>
+    /// Defines the <see cref="IAppUser" />
+    /// </summary>
     public interface IAppUser
     {
+        /// <summary>
+        /// The AddAppUser
+        /// </summary>
+        /// <param name="appUser">The appUser<see cref="ApplicationUser"/></param>
+        /// <returns>The <see cref="Task"/></returns>
         Task AddAppUser(ApplicationUser appUser);
 
-        Task<ApplicationUser> GetApplicationUserByEmail(string email); 
+        /// <summary>
+        /// The GetApplicationUserByEmail
+        /// </summary>
+        /// <param name="email">The email<see cref="string"/></param>
+        /// <returns>The <see cref="Task{ApplicationUser}"/></returns>
+        Task<ApplicationUser> GetApplicationUserByEmail(string email);
     }
 }
