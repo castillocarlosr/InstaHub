@@ -29,7 +29,7 @@ namespace InstaHub_MVC.Controllers
         [Authorize]
         public async Task Logout()
         {
-            
+
             await HttpContext.SignOutAsync("Auth0", new AuthenticationProperties
             {
                 // Indicate here where Auth0 should redirect the user after a logout.

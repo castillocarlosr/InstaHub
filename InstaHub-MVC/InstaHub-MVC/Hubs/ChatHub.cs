@@ -36,10 +36,10 @@
         }
 
         /// <summary>
-        /// #general group for all users to use messages 
+        /// TThis will send a message to all connection ID's that are currently online
         /// </summary>
-        /// <param name="message"></param>
-        /// <returns></returns>
+        /// <param name="message">The message<see cref="string"/></param>
+        /// <returns>The <see cref="Task"/>Message To All Users</returns>
         public async Task SendMessageToAll(string message)
         {
             Message m = new Message();
@@ -59,6 +59,7 @@
         /// </summary>
         /// <param name="message">The message<see cref="string"/></param>
         /// <returns>The <see cref="Task"/>Message to self</returns>
+        
         //Not used yet
         public Task SendMessageToCaller(string message)
         {
@@ -71,6 +72,7 @@
         /// <param name="connectionId">The connectionId<see cref="string"/></param>
         /// <param name="message">The message<see cref="string"/></param>
         /// <returns>The <see cref="Task"/>Message to the individual user</returns>
+
         //Not used yet
         public Task SendMessageToUser(string connectionId, string message)
         {
@@ -82,6 +84,7 @@
         /// </summary>
         /// <param name="group">The group<see cref="string"/></param>
         /// <returns>The <see cref="Task"/>Added To Group/ Create A Group</returns>
+
         //Not used yet
         public Task JoinGroup(string group)
         {
@@ -94,6 +97,7 @@
         /// <param name="group">The group<see cref="string"/></param>
         /// <param name="message">The message<see cref="string"/></param>
         /// <returns>The <see cref="Task"/>Message To Group</returns>
+
         //Not used yet
         public Task SendMessageToGroup(string group, string message)
         {
