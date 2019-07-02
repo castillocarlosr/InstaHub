@@ -48,10 +48,11 @@ namespace InstaHub_MVC
                 options.UseSqlServer(Configuration["ConnectionStrings:LocalDbConnection"])
                 );
             }
-            
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                //options.CheckConsentNeeded = context => true;
                 options.CheckConsentNeeded = context => HostingEnvironment.IsProduction();
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
