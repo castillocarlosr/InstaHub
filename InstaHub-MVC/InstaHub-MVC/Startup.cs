@@ -121,7 +121,6 @@ namespace InstaHub_MVC
             services.AddScoped<IGroup, GroupServices>();
             services.AddScoped<IMessages, MessageServices>();
             services.AddScoped<IAppUser, ApplicationUserServices>();
-            services.AddScoped<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.  STUFF!
