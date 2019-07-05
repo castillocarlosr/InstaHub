@@ -44,7 +44,7 @@ namespace InstaHub_MVC.Controllers
                 // -------------------------------------------------------//
                 var handler = new JwtSecurityTokenHandler();
                 var tokenS = handler.ReadToken(idToken) as JwtSecurityToken;
-                string email = tokenS.Claims.FirstOrDefault(c => c.Type == "email").Value;
+                string email = tokenS.Claims.FirstOrDefault(c => c.Type == "email").Value; //doesn't seem to work with GitHub.
 
                 var claims = new List<Claim> { new Claim(ClaimTypes.Name, email) };
 
