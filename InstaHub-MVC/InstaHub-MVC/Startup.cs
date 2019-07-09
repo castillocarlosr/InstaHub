@@ -36,10 +36,6 @@ namespace InstaHub_MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<InstaHubDbContext>(options =>
-            options.UseSqlServer(Configuration["ConnectionStrings:DeployedDbConnection"])
-            );
-            /*
             if (HostingEnvironment.IsProduction())
             {
                 services.AddDbContext<InstaHubDbContext>(options =>
@@ -52,7 +48,7 @@ namespace InstaHub_MVC
                 options.UseSqlServer(Configuration["ConnectionStrings:LocalDbConnection"])
                 );
             }
-            */
+            
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -119,8 +115,7 @@ namespace InstaHub_MVC
                 };
             });
 
-            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddMvc();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSignalR();
 
             services.AddScoped<IGroup, GroupServices>();
@@ -150,6 +145,7 @@ namespace InstaHub_MVC
             {
                 routes.MapHub<ChatHub>("/chatHub");
             });
+
             app.UseMvc(route =>
             {
                 route.MapRoute(

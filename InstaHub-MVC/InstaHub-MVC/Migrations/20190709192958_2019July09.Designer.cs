@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InstaHub_MVC.Migrations
 {
     [DbContext(typeof(InstaHubDbContext))]
-    [Migration("20190701193357_July012019")]
-    partial class July012019
+    [Migration("20190709192958_2019July09")]
+    partial class _2019July09
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
