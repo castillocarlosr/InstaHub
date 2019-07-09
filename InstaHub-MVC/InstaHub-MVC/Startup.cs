@@ -48,7 +48,7 @@ namespace InstaHub_MVC
                 options.UseSqlServer(Configuration["ConnectionStrings:LocalDbConnection"])
                 );
             }
-
+            
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -145,6 +145,7 @@ namespace InstaHub_MVC
             {
                 routes.MapHub<ChatHub>("/chatHub");
             });
+
             app.UseMvc(route =>
             {
                 route.MapRoute(
