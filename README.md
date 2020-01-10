@@ -64,6 +64,7 @@ If you want to learn more about creating good readme files then refer the follow
 ~~March 15, 2019~~
 April 30, 2019
 ```
+I plan on getting this up and running again around Feb 2020.  Depending on workflow.
 --------------------------------------------------------------------------------------------------------------------------
 # Authors
 * [Carlos Castillo](https://github.com/castillocarlosr)
