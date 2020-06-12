@@ -8,7 +8,8 @@ Note:  Link below broken.  Feel free to look at the source code though.
 ```
  Azure trial over.  Setting up new site.  Last update April 30, 2019 -Carlos
 ```
-New website host coming soon.  Please wait suring set-up and deployment.  -July 01, 2019
+New website host coming soon.  -July 01, 2019
+Will work on deploying when available.  Last update: June 12, 2020
 ```
 https://instahubfamilychat.azurewebsites.net/
 ```
@@ -62,7 +63,8 @@ If you want to learn more about creating good readme files then refer the follow
 ## Latest update
 ```
 ~~March 15, 2019~~
-April 30, 2019
+~~April 30, 2019~~
+June 12, 2020
 ```
 I plan on getting this up and running again around Feb 2020.  Depending on workflow.
 --------------------------------------------------------------------------------------------------------------------------
