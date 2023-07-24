@@ -6,10 +6,9 @@ Note:  Link below broken.  Feel free to look at the source code though.
 [InstaHub](https://instahub.azurewebsites.net)
 ~~https://instahub.azurewebsites.net~~
 ```
- Azure trial over.  Setting up new site.  Last update April 30, 2019 -Carlos
+ Azure trial over.  Setting up a new site.  Last update April 30, 2019 -Carlos
 ```
-New website host coming soon.  -July 01, 2019
-Will work on deploying when available.  Last update: June 12, 2020
+Will work on deploying when I can.  I need to update some dependencies and see if it will still run on my free Azure account.  Last update: July 24, 2023 -Carlos
 ```
 https://instahubfamilychat.azurewebsites.net/
 ```
